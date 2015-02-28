@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  root 'application#login_page'
+  get 'profile' => 'profile#profile'
+  get 'login' => 'sessions#login_page'
+  post 'login' => 'sessions#login'
+  get 'logout' => 'sessions#logout'
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
