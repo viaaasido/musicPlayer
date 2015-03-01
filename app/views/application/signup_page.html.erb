@@ -1,0 +1,9 @@
+<h3>Sign-Up</h3>
+<%= form_tag('/signup', method: :post) do %>
+	<div> Name: 	</div> <input type='text' name='name' />
+	<div> Username: </div> <input type='text' name='username' />
+	<div> Password: </div> <input type='password' name='password' />
+	<div> Confirm Password: </div> <input type='password' name='password_confirm' />
+	</br> <input type='submit' value='signup' /><br>
+<%= link_to "Already a member? Sign in now", login_path %>
+<% end %>

@@ -12,10 +12,17 @@ class ApplicationController < ActionController::Base
   private
 
   def require_login
-  	redirect_to '/login' if session[:user_id].nil?
+  	redirect_to '/home' if session[:user_id].nil?
   end
 
-  def login_page
+  def profile
+  end
 
+  def home
+    if session[:user_id].nil?
+      redirect_to '/home' 
+    else
+      redirect_to '/profile'
+    end
   end
 end

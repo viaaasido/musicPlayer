@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  root 'application#login_page'
-  get 'profile' => 'profile#profile'
+  root 'application#profile'
+  get 'home' => 'sessions#home'
+  get 'main' => 'sessions#main'
+  get 'profile' => 'application#profile'
   get 'login' => 'sessions#login_page'
   post 'login' => 'sessions#login'
   get 'logout' => 'sessions#logout'
+  get 'signup' => 'sessions#signup_page'
+  post 'signup' => 'sessions#signup'
   
 
   # The priority is based upon order of creation: first created -> highest priority.

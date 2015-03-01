@@ -2,11 +2,13 @@ class User < ActiveRecord::Base
 
 	def self.create_user(name, username, password, password_confirm)
 		return false if password != password_confirm
-		return false if User.where(username: username).to_a_size > 0
+		return false if User.where(username: username).to_a.size > 0
 
 		salt = BCrypt::Engine.generate_salt
 		hashed_password = BCrypt::Engine.hash_secret(password, salt)
 		new_user = User.create(name: name, username: username, password_hash: hashed_password, salt: salt)
+		user = User.authenticate(username, password)
+		user.update(user_id: user.id)
 		new_user
 	end
 
