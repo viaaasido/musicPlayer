@@ -1,1 +1,182 @@
-Test
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Musicality</a>
+        </div>
+
+        <!-- <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li id = "newPlaylist"><a href="">New Playlist</a></li>
+            <li id = "newSong"><a href="">Upload Song</a></li>
+            <li id = "logout"><a href="">Log Out</a></li>
+          </ul>
+        </div>.nav-collapse -->
+       </div> 
+    </nav>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li>
+                	<div class="userIcon">
+						<center><img src="icon.jpg" alt="Circular Image" class = "img-circle"  height = "150" width = "150"/></center>
+					</div>
+                </li>
+            	<li>
+            		<center><h2 class = "name">John Doe</h2></center>
+            	</li>
+            	<li>
+            		<center><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></center>
+            	</li>
+            	<li id="options">
+            		<a href="">New Playlist</a>
+            	</li>
+            	<li id="options">
+            		<a href="">Upload Song</a>
+            	</li>
+            	<li id="options">
+            		<a href="">Log Out</a>
+            	</li>
+
+
+            </ul>
+        </div>
+
+
+	<div id="page-content-wrapper">
+		<div class="container">
+			<br><br><br>
+					<div class="row clearfix">
+						<div class="col-md-12 column">
+							<div class="row clearfix">
+								<div class="col-md-12 column">
+									<center>
+									<h3>
+										Playlists
+									</h3>
+								</center>
+								</div>
+							</div>
+							<div class="row clearfix">
+								<div class="col-md-12 column">
+									<div class = "mainLists">
+										<div class = "playlist">
+											<a href="" onclick="displayPlaylist();">
+												<img src = "album.jpg" alt="Circular Image" width="100" height="100" class = "img-circle">
+											</a>
+											<div class = "desc">
+												<h3>EDM</h3>
+											</div>
+										</div>
+
+										<div class = "playlist">
+											<a href="">
+												<img src = "album.jpg" alt="Circular Image" width="100" height="100" class = "img-circle">
+											</a>
+											<div class = "desc">
+												<h3>Rock</h3>
+											</div>
+										</div>
+									</div>
+
+									<div class = "playlist">
+										<a href="#openModal">
+												<img src = "add.png" alt="Circular Image" width="100" height="100" class = "img-circle">
+										</a>
+										<div class = "desc">
+											<h3>Add</h3>
+										</div>
+
+										<div id = "openModal" class = "modalDialog">
+											<div>
+												<a href = "#close" title = "Close" calss = "close"> x </a>
+												<h4>New Playlist</h4>
+
+												<form>
+													Playlist Name: <br><br>
+													<input type = "text" name = "playlistName">
+													<br><br>
+													<button type = "button" id = "newPlaylistBTN" onclick = "createPlaylist()"> Create Playlist </button>
+												</form>
+
+											</div>
+										</div>
+
+									</div> 
+							</div>
+						</div>
+					</div> <!--row clearfix-->
+					<div class = "row clearfix">
+						<div class = "container">
+						<div class = "playlist-header">
+			        		<h2 id = "name">Playlist Name</h2>
+			        	</div>
+			        	<div id="table" class="table-editable">
+						    <table class="table">
+						    	<tr>
+						        	<th width = "30%">Title</th>
+							        <th width = "30%">Artist</th>
+							        <th width = "10%"></th>
+							        <th width = "10%"></th>
+							        <th width = "10%">Play</th>
+							        <th width = "10%">Pause</th>
+								</tr>
+							    <tr>
+							        <td contenteditable="true">Stir Fry</td>
+							        <td contenteditable="true">stir-fry</td>
+							        <td>
+							          <span class="table-remove glyphicon glyphicon-remove"></span>
+							        </td>
+							        <td>
+							          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+							          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+							        </td>
+							        <td>
+							        	<span class="table-play glyphicon glyphicon-play"></span>
+							        </td>
+							        <td>
+							        	<span class="table-pause glyphicon glyphicon-pause"></span>
+							        </td>
+							    </tr>
+							      <!-- This is our clonable table line -->
+							    <tr class="hide">
+							        <td contenteditable="true">Untitled</td>
+							        <td contenteditable="true">undefined</td>
+							        <td>
+							          <span class="table-remove glyphicon glyphicon-remove"></span>
+							        </td>
+							        <td>
+							          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+							          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+							        </td>
+							        <td>
+							        	<span class="table-play glyphicon glyphicon-play"></span>
+							        </td>
+							        <td>
+							        	<span class="table-pause glyphicon glyphicon-pause"></span>
+							        </td>
+							    </tr>
+							</table>
+						</div>
+						<span class="table-add glyphicon glyphicon-plus"></span>
+						</div>
+					</div> <!--row clearfix-->
+
+					<div class="row clearfix">
+						<div class="col-md-9 column">
+							<audio controls>
+								<source src = "test.mp3" type ="audio/mpeg">
+							</audio>
+						</div>
+					</div> <!--audio row -->
+		</div> <!-- container -->
+	</div> <!-- page content wrapper -->
+</div>
