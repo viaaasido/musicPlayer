@@ -7,7 +7,7 @@ audio {
 	height: 100px;
 	position: fixed;
 	bottom: 5px;
-	left: 0px;
+  float: right;
 	display: block;
 }
 

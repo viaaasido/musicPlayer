@@ -27,7 +27,11 @@
             <ul class="sidebar-nav">
                 <li>
                 	<div class="userIcon">
-						<center><img src="icon.jpg" alt="Circular Image" class = "img-circle"  height = "150" width = "150"/></center>
+
+						<center>
+							<%= image_tag("icon.jpg", width: '150', height: '150', class: "img-circle", alt: "Circular Image")  %>
+							<!-- <img src="icon.jpg" alt="Circular Image" class = "img-circle"  height = "150" width = "150"/> -->
+						</center>
 					</div>
                 </li>
             	<li>
@@ -70,7 +74,8 @@
 									<div class = "mainLists">
 										<div class = "playlist">
 											<a href="" onclick="displayPlaylist();">
-												<img src = "album.jpg" alt="Circular Image" width="100" height="100" class = "img-circle">
+												<%= image_tag("album.jpg", width: '100', height: '100', class: "img-circle", alt: "Circular Image")  %>
+												<!-- <img src = "album.jpg" alt="Circular Image" width="100" height="100" class = "img-circle"> -->
 											</a>
 											<div class = "desc">
 												<h3>EDM</h3>
@@ -79,7 +84,8 @@
 
 										<div class = "playlist">
 											<a href="">
-												<img src = "album.jpg" alt="Circular Image" width="100" height="100" class = "img-circle">
+												<%= image_tag("album.jpg", width: '100', height: '100', class: "img-circle", alt: "Circular Image")  %>
+												<!-- <img src = "album.jpg" alt="Circular Image" width="100" height="100" class = "img-circle"> -->
 											</a>
 											<div class = "desc">
 												<h3>Rock</h3>
@@ -89,7 +95,8 @@
 
 									<div class = "playlist">
 										<a href="#openModal">
-												<img src = "add.png" alt="Circular Image" width="100" height="100" class = "img-circle">
+											<%= image_tag("add.png", width: '100', height: '100', class: "img-circle", alt: "Circular Image")  %>
+												<!-- <img src = "add.png" alt="Circular Image" width="100" height="100" class = "img-circle"> -->
 										</a>
 										<div class = "desc">
 											<h3>Add</h3>
@@ -106,9 +113,8 @@
 													<br><br>
 													<button type = "button" id = "newPlaylistBTN" onclick = "createPlaylist()"> Create Playlist </button>
 												</form>
-
 											</div>
-										</div>
+										</div> <!-- MODAL  -->
 
 									</div> 
 							</div>
@@ -166,14 +172,14 @@
 							    </tr>
 							</table>
 						</div>
-						<span class="table-add glyphicon glyphicon-plus"></span>
+						<!-- <span class="table-add glyphicon glyphicon-plus"></span> -->
+						<%= content_tag(:span, nil, class:["table-add", "glyphicon-plus"]) %>
 						</div>
 					</div> <!--row clearfix-->
-
 					<div class="row clearfix">
 						<div class="col-md-9 column">
 							<audio controls>
-								<source src = "test.mp3" type ="audio/mpeg">
+								<source src = "<%= audio_path("test.mp3") %>" type ="audio/mpeg">
 							</audio>
 						</div>
 					</div> <!--audio row -->
