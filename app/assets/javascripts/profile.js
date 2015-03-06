@@ -77,7 +77,6 @@ function displayPlaylist() {
 //   var playlistName = document.getElementsByName("playlistName")[0].value;
 //   console.log(playlistName);
 //   $("#name").html(playlistName);
-// }
 
 $(function(){
     $("#upload_link").on('click', function(e){

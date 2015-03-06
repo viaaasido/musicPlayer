@@ -36,19 +36,19 @@
 					</div>
                 </li>
             	<li>
-            		<center><h2 class = "name">John Doe</h2></center>
-            	</li>
-            	<li>
-            		<center><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></center>
+            		<center><h2 class = "name"><%= @currUser.name %></h2></center>
             	</li>
             	<li id="options">
             		<a href="">New Playlist</a>
             	</li>
             	<li id="options">
+
             		<%=form_tag('/upload', :multipart => true) do%>
 					    <%= file_field_tag :song %>
 					    <%= submit_tag "Upload" %>
 					<% end %>
+
+            		<%= link_to "Upload Song", upload_path %>
             	</li>
             	<li id="options">
             		<%= link_to "Log Out", logout_path %>
@@ -69,16 +69,13 @@
 									<center>
 									<h3>
 										Playlists
-									</h3>
-									    <% @playlists.each do |playlist| %>
-    	<div> <%= playlist.name%> </div>
-    <% end %>
-								</center>
+									</h3>								</center>
 								</div>
 							</div>
 							<div class="row clearfix">
 								<div class="col-md-12 column">
 									<div class = "mainlist">
+
 										<div class = "playlist">
 											<a href="" onclick="displayPlaylist();">
 												<%= image_tag("album.jpg", width: '100', height: '100', class: "img-circle", alt: "Circular Image")  %>
@@ -98,6 +95,18 @@
 												<h3>Rock</h3>
 											</div>
 										</div>
+										
+										<% @playlists.each do |playlist| %>
+											<div class = "playlist">
+												<a href="" onclick="displayPlaylist();">
+													<%= image_tag("album.jpg", width: '100', height: '100', class: "img-circle", alt: "Circular Image")  %>
+													
+												</a>
+												<div class = "desc"> 
+													<h3><%= playlist.name %></h3>
+												</div>
+											</div
+										<% end %>
 									</div>
 
 									<div class = "playlist">
@@ -143,7 +152,8 @@
 							        <td contenteditable="true">Stir Fry</td>
 							        <td contenteditable="true">stir-fry</td>
 							        <td>
-							        	<!<%= button_to "Play", upload_path %>
+
+							        	<%= button_to "Play", signup_path, :class => "", :method => :get %>\
 							        </td>
 							    </tr>
 							      <!-- This is our clonable table line -->
