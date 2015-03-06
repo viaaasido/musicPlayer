@@ -340,3 +340,7 @@ html, body {
 }
 
 .close:hover { background: #00d9ff; }
+
+#upload{
+    display:none
+}

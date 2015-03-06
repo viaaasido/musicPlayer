@@ -32,6 +32,7 @@
 							<%= image_tag("icon.jpg", width: '150', height: '150', class: "img-circle", alt: "Circular Image")  %>
 							<!-- <img src="icon.jpg" alt="Circular Image" class = "img-circle"  height = "150" width = "150"/> -->
 						</center>
+
 					</div>
                 </li>
             	<li>
@@ -44,7 +45,10 @@
             		<a href="">New Playlist</a>
             	</li>
             	<li id="options">
-            		<%= link_to "Upload Song", upload_path %>
+            		<%=form_tag('/upload', :multipart => true) do%>
+					    <%= file_field_tag :song %>
+					    <%= submit_tag "Upload" %>
+					<% end %>
             	</li>
             	<li id="options">
             		<%= link_to "Log Out", logout_path %>
@@ -66,6 +70,9 @@
 									<h3>
 										Playlists
 									</h3>
+									    <% @playlists.each do |playlist| %>
+    	<div> <%= playlist.name%> </div>
+    <% end %>
 								</center>
 								</div>
 							</div>
@@ -136,7 +143,7 @@
 							        <td contenteditable="true">Stir Fry</td>
 							        <td contenteditable="true">stir-fry</td>
 							        <td>
-							        	<%= button_to "Play", signup_path, :class => "", :method => :get %>
+							        	<!<%= button_to "Play", upload_path %>
 							        </td>
 							    </tr>
 							      <!-- This is our clonable table line -->

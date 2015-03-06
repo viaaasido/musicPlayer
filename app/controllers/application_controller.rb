@@ -9,14 +9,13 @@ class ApplicationController < ActionController::Base
   	User.where(id: session[:user_id]).first
   end
 
-  private
 
   def require_login
   	redirect_to '/home' if session[:user_id].nil?
   end
 
   def profile
-    
+    @playlists = Playlist.where(user_id: session[:user_id]).to_a
   end
 
   def home
