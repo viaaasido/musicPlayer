@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'application#home'
+  root 'application#profile'
   get 'home' => 'sessions#home'
   get 'main' => 'sessions#main'
   get 'profile' => 'application#profile'
@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#logout'
   get 'signup' => 'sessions#signup_page'
   post 'signup' => 'sessions#signup'
+  post 'createPlaylist' => 'others#createPlaylist'
+  post 'upload' => 'others#upload'
   
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def profile
+    
   end
 
   def home

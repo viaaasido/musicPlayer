@@ -1,11 +1,24 @@
 var $TABLE = $('#table');
 var $BTN = $('#export-btn');
 var $EXPORT = $('#export');
+var $MAINLIST = $('.mainlist');
+var currPlaylist;
+
 
 $('.table-add').click(function () {
   var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
   $TABLE.find('table').append($clone);
 });
+
+function clonePlaylist(currPL) {
+  
+  currPlaylist = currPL.value;
+  console.log(currPlaylist);
+  var $clone = $MAINLIST.find('.hide').clone(true).removeClass('hide');
+  $MAINLIST.append($clone);
+
+}
+
 
 $('.table-remove').click(function () {
   $(this).parents('tr').detach();
@@ -60,9 +73,8 @@ function displayPlaylist() {
 
 }
 
-function createPlaylist() {
-  var playlistName = document.getElementsByName("playlistName")[0].value;
-  console.log(playlistName);
-  $("#name").html(playlistName);
-  $(".modalDialog").hide();
-}
+// function createPlaylist() {
+//   var playlistName = document.getElementsByName("playlistName")[0].value;
+//   console.log(playlistName);
+//   $("#name").html(playlistName);
+// }
