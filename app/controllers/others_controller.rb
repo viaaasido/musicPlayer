@@ -2,11 +2,12 @@ class OthersController < ApplicationController
 	def upload
 		user_id = session[:user_id]
 		song = params[:song].original_filename
-		directory = "public/uploads"
+		directory = "app/assets/audios/uploads"
+		str = "uploads/" + song
 		path = File.join(directory, song);
 		File.open(path, 'wb') { |f| f.write(params[:song].read) }
 		playlist_id = session[:playlist]
-		Song.create_song(song, nil, playlist_id, nil, session[:user_id])
+		Song.create_song(song, nil, playlist_id, nil, session[:user_id], str)
 
 		redirect_to '/profile'
 	end
@@ -22,6 +23,11 @@ class OthersController < ApplicationController
 
 	def select_playlist
 		session[:playlist] = Playlist.check(params[:name]).id
+		redirect_to ''
+	end
+
+	def streamMusic
+		session[:song] = Song.where(title: params[:song]).first.id
 		redirect_to ''
 	end
 end

@@ -23,8 +23,21 @@ class ApplicationController < ActionController::Base
       session[:playlist] = pl.id
     end
 
+    if session[:song].nil?
+      s = Song.where(playlist_id: session[:playlist]).first
+      if s
+        session[:song] = s.id
+      end
+    end
+
     @curr_playlist = Playlist.where(id: session[:playlist]).first
+
+    p = Song.where(id: session[:song]).first
+    if p
+      @path = p.path
+    end
     @songs = Song.where(playlist_id: session[:playlist]).to_a
+       
 
   end
 
