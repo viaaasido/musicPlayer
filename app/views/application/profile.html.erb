@@ -44,10 +44,10 @@
             		<a href="">New Playlist</a>
             	</li>
             	<li id="options">
-            		<a href="">Upload Song</a>
+            		<%= link_to "Upload Song", upload_path %>
             	</li>
             	<li id="options">
-            		<a href="">Log Out</a>
+            		<%= link_to "Log Out", logout_path %>
             	</li>
 
 
@@ -71,26 +71,18 @@
 							</div>
 							<div class="row clearfix">
 								<div class="col-md-12 column">
-									<div class = "mainLists">
-										<div class = "playlist">
-											<a href="" onclick="displayPlaylist();">
-												<%= image_tag("album.jpg", width: '100', height: '100', class: "img-circle", alt: "Circular Image")  %>
-												<!-- <img src = "album.jpg" alt="Circular Image" width="100" height="100" class = "img-circle"> -->
-											</a>
-											<div class = "desc">
-												<h3>EDM</h3>
-											</div>
-										</div>
-
-										<div class = "playlist">
-											<a href="">
-												<%= image_tag("album.jpg", width: '100', height: '100', class: "img-circle", alt: "Circular Image")  %>
-												<!-- <img src = "album.jpg" alt="Circular Image" width="100" height="100" class = "img-circle"> -->
-											</a>
-											<div class = "desc">
-												<h3>Rock</h3>
-											</div>
-										</div>
+									<div class = "mainlist">
+										<% @playlists.each do |playlist| %>
+											<div class = "playlist">
+												<a href="" onclick="displayPlaylist();">
+													<%= image_tag("album.jpg", width: '100', height: '100', class: "img-circle", alt: "Circular Image")  %>
+													
+												</a>
+												<div class = "desc"> 
+													<h3><%= playlist.name %></h3>
+												</div>
+											</div
+										<% end %>
 									</div>
 
 									<div class = "playlist">
@@ -107,12 +99,12 @@
 												<a href = "#close" title = "Close" calss = "close"> x </a>
 												<h4>New Playlist</h4>
 
-												<form>
+												<%=form_tag('/createPlaylist', method: 'post', :onSubmit => 'clonePlaylist(playlistName);') do%>
 													Playlist Name: <br><br>
 													<input type = "text" name = "playlistName">
 													<br><br>
-													<button type = "button" id = "newPlaylistBTN" onclick = "createPlaylist()"> Create Playlist </button>
-												</form>
+													<input type='submit' value='submit'>
+												<% end %>
 											</div>
 										</div> <!-- MODAL  -->
 
@@ -128,28 +120,15 @@
 			        	<div id="table" class="table-editable">
 						    <table class="table">
 						    	<tr>
-						        	<th width = "30%">Title</th>
-							        <th width = "30%">Artist</th>
-							        <th width = "10%"></th>
-							        <th width = "10%"></th>
+						        	<th width = "50%">Title</th>
+							        <th width = "40%">Artist</th>
 							        <th width = "10%">Play</th>
-							        <th width = "10%">Pause</th>
 								</tr>
 							    <tr>
 							        <td contenteditable="true">Stir Fry</td>
 							        <td contenteditable="true">stir-fry</td>
 							        <td>
-							          <span class="table-remove glyphicon glyphicon-remove"></span>
-							        </td>
-							        <td>
-							          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-							          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-							        </td>
-							        <td>
-							        	<span class="table-play glyphicon glyphicon-play"></span>
-							        </td>
-							        <td>
-							        	<span class="table-pause glyphicon glyphicon-pause"></span>
+							        	<%= button_to "Play", signup_path, :class => "", :method => :get %>
 							        </td>
 							    </tr>
 							      <!-- This is our clonable table line -->
@@ -157,23 +136,12 @@
 							        <td contenteditable="true">Untitled</td>
 							        <td contenteditable="true">undefined</td>
 							        <td>
-							          <span class="table-remove glyphicon glyphicon-remove"></span>
+							          <!-- play button -->
 							        </td>
-							        <td>
-							          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-							          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-							        </td>
-							        <td>
-							        	<span class="table-play glyphicon glyphicon-play"></span>
-							        </td>
-							        <td>
-							        	<span class="table-pause glyphicon glyphicon-pause"></span>
-							        </td>
+							        
 							    </tr>
 							</table>
 						</div>
-						<!-- <span class="table-add glyphicon glyphicon-plus"></span> -->
-						<%= content_tag(:span, nil, class:["table-add", "glyphicon-plus"]) %>
 						</div>
 					</div> <!--row clearfix-->
 					<div class="row clearfix">
