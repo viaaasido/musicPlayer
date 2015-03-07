@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
 
   def profile
     @playlists = Playlist.where(user_id: session[:user_id]).to_a
+    @currUser = User.where(id: session[:user_id]).first
   end
 
   def home
