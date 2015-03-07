@@ -19,4 +19,9 @@ class OthersController < ApplicationController
 
 		redirect_to '/profile'
 	end
+
+	def select_playlist
+		session[:playlist] = Playlist.check(params[:name]).id
+		redirect_to ''
+	end
 end

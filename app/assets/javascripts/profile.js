@@ -66,21 +66,12 @@ $BTN.click(function () {
   $EXPORT.text(JSON.stringify(data));
 });
 
-function displayPlaylist() {
-  console.log("playlistName");
-  $("#name").html("test playlist name");
+function displayPlaylist(playlistName) {
+  $("#name").html(playlistName);
   
-
 }
 
 // function createPlaylist() {
 //   var playlistName = document.getElementsByName("playlistName")[0].value;
 //   console.log(playlistName);
 //   $("#name").html(playlistName);
-
-$(function(){
-    $("#upload_link").on('click', function(e){
-        e.preventDefault();
-        $("#upload:hidden").trigger('click');
-    });
-});
