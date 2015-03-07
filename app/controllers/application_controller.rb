@@ -36,6 +36,12 @@ class ApplicationController < ActionController::Base
     if p
       @path = p.path
     end
+
+    n = Song.where(id: session[:song]+2).first
+    if n
+      @next = n.path
+    end
+
     @songs = Song.where(playlist_id: session[:playlist]).to_a
        
 

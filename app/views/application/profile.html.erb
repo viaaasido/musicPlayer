@@ -171,8 +171,8 @@
 					</div> <!--row clearfix-->
 					<div class="row clearfix">
 						<div class="col-md-9 column">
-							<audio controls autoplay>
-								<source src = "<%= audio_path(@path) %>" type ="audio/mpeg">
+							<audio controls autoplay onended="playNext("<%= @next %>")">
+								<source id = "ssrc" src = "<%= audio_path(@path) %>" type ="audio/mpeg">
 							</audio>
 						</div>
 					</div> <!--audio row -->

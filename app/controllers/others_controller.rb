@@ -8,7 +8,7 @@ class OthersController < ApplicationController
 		File.open(path, 'wb') { |f| f.write(params[:song].read) }
 		playlist_id = session[:playlist]
 		Song.create_song(song, nil, playlist_id, nil, session[:user_id], str)
-
+		puts path
 		redirect_to '/profile'
 	end
 

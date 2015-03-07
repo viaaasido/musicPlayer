@@ -3,6 +3,24 @@ var $BTN = $('#export-btn');
 var $EXPORT = $('#export');
 var $MAINLIST = $('.mainlist');
 
+$(document).ready(function(){
+  $(document). on('click', '.table-up', function () {
+    console.log("test");
+    var $row = $(this).parents('tr');
+    if ($row.index() === 1) return; // Don't go above the header
+    $row.prev().before($row.get(0));
+  });
+
+  $(document).on('click', '.table-down', function () {
+    var $row = $(this).parents('tr');
+    $row.next().after($row.get(0));
+  });
+
+});
+
+function playNext(path){
+  console.log(path);
+}
 
 function clonePlaylist(currPL) {
   
