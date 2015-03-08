@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post 'signup' => 'sessions#signup'
   post 'createPlaylist' => 'others#createPlaylist'
   post 'upload' => 'others#upload'
+  post 'selectpl' => 'others#select_playlist'
+  get 'streamMusic' => 'others#streamMusic'
   
 
   # The priority is based upon order of creation: first created -> highest priority.

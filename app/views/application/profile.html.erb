@@ -10,13 +10,6 @@
           <a class="navbar-brand" href="#">Musicality</a>
         </div>
 
-        <!-- <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li id = "newPlaylist"><a href="">New Playlist</a></li>
-            <li id = "newSong"><a href="">Upload Song</a></li>
-            <li id = "logout"><a href="">Log Out</a></li>
-          </ul>
-        </div>.nav-collapse -->
        </div> 
     </nav>
 
@@ -32,16 +25,28 @@
 							<%= image_tag("icon.jpg", width: '150', height: '150', class: "img-circle", alt: "Circular Image")  %>
 							<!-- <img src="icon.jpg" alt="Circular Image" class = "img-circle"  height = "150" width = "150"/> -->
 						</center>
+
 					</div>
                 </li>
             	<li>
             		<center><h2 class = "name"><%= @currUser.name %></h2></center>
             	</li>
             	<li id="options">
+<<<<<<< HEAD
             		<%= form_tag('/upload', :multipart => true) do %>
         				<%= file_field_tag :song %>
         				<%= submit_tag "Upload" %>
         			<% end %>
+=======
+            		<a href="">New Playlist</a>
+            	</li>
+            	<li id="options">
+
+            		<%=form_tag('/upload', :multipart => true) do%>
+					    <%= file_field_tag :song %>
+					    <%= submit_tag "Upload" %>
+					<% end %>
+>>>>>>> a5b54fa8f96a0c65cb0020966f39edd3631c2efc
             	</li>
             	<li id="options">
             		<%= link_to "Log Out", logout_path %>
@@ -62,18 +67,29 @@
 									<center>
 									<h3>
 										Playlists
-									</h3>
-								</center>
+									</h3>								
+									</center>
 								</div>
 							</div>
 							<div class="row clearfix">
 								<div class="col-md-12 column">
 									<div class = "mainlist">
+										
 										<% @playlists.each do |playlist| %>
 											<div class = "playlist">
+<<<<<<< HEAD
 												<a href="" onclick="displayPlaylist();">
 													<%= image_tag("album.jpg", width: '100', height: '100', class: "img-circle", alt: "Circular Image")  %>
 												</a>
+=======
+												<script> var playlistname = '<%=playlist.name%>'</script>
+												<%=form_tag('/selectpl', method: 'post', :onSubmit => "displayPlaylist(playlistname);") do%>
+													<%= hidden_field_tag :name, playlist.name %>
+  													<%= image_submit_tag("album.jpg", width: '100', height: '100', class: "img-circle", alt: "Circular Image") %>
+												<% end %>
+
+												
+>>>>>>> a5b54fa8f96a0c65cb0020966f39edd3631c2efc
 												<div class = "desc"> 
 													<h3><%= playlist.name %></h3>
 												</div>
@@ -111,26 +127,45 @@
 					<div class = "row clearfix">
 						<div class = "container">
 						<div class = "playlist-header">
-			        		<h2 id = "name">Playlist Name</h2>
+			        		<h2 id = "name"><%= @curr_playlist.name %></h2>
 			        	</div>
 			        	<div id="table" class="table-editable">
+			
 						    <table class="table">
 						    	<tr>
 						        	<th width = "50%">Title</th>
-							        <th width = "40%">Artist</th>
+							        <th width = "30%">Artist</th>
 							        <th width = "10%">Play</th>
+							        <th width = "5%">Up</th>
+							        <th width = "5%">Down</th>
 								</tr>
+							    
+							    <% @songs.each do |song| %>
 							    <tr>
-							        <td contenteditable="true">Stir Fry</td>
-							        <td contenteditable="true">stir-fry</td>
+							    	<td contenteditable="false"><%= song.title %></td>
+							        <td contenteditable="false"><%= song.artist %></td>
 							        <td>
-							        	<%= button_to "Play", signup_path, :class => "", :method => :get %>
+
+										<%=form_tag('/streamMusic', method: 'get') do%>
+											<%= hidden_field_tag :song, song.title %>
+  											<%= submit_tag "Play" %>
+										<% end %>
 							        </td>
+							    	<td>
+							    		<span class="table-up">Up</span>
+							    	</td>
+							    	<td>
+							    		<span class="table-down">Down</span>
+							    	</td>
 							    </tr>
+
+							    <% end %>
+
+
 							      <!-- This is our clonable table line -->
 							    <tr class="hide">
-							        <td contenteditable="true">Untitled</td>
-							        <td contenteditable="true">undefined</td>
+							        <td contenteditable="false">Untitled</td>
+							        <td contenteditable="false">undefined</td>
 							        <td>
 							          <!-- play button -->
 							        </td>
@@ -142,8 +177,8 @@
 					</div> <!--row clearfix-->
 					<div class="row clearfix">
 						<div class="col-md-9 column">
-							<audio controls>
-								<source src = "<%= audio_path("test.mp3") %>" type ="audio/mpeg">
+							<audio controls autoplay onended="playNext("<%= @next %>")">
+								<source id = "ssrc" src = "<%= audio_path(@path) %>" type ="audio/mpeg">
 							</audio>
 						</div>
 					</div> <!--audio row -->
